@@ -1,0 +1,27 @@
+{
+	"name": "example-notes",
+	"type": "module",
+	"scripts": {
+		"dev": "vinxi dev",
+		"build": "vinxi build",
+		"start": "vinxi start",
+		"preview": "bun run build && npx wrangler pages dev",
+		"deploy": "bun run build && wrangler pages deploy"
+	},
+	"dependencies": {
+		"@solidjs/router": "^0.15.0",
+		"@solidjs/start": "^1.1.0",
+		"date-fns": "^3.6.0",
+		"solid-js": "^1.9.5",
+		"marked": "^12.0.1",
+		"unstorage": "1.10.2",
+		"vinxi": "^0.5.3"
+	},
+	"engines": {
+		"node": ">=22"
+	},
+	"devDependencies": {
+		"@cloudflare/workers-types": "^4.20250504.0",
+		"wrangler": "^4.14.1"
+	}
+}
