@@ -5,11 +5,11 @@
 {
 	"$schema": "node_modules/wrangler/config-schema.json",
 	"name": "chat-app",
-	"main": "./.output/server/index.mjs",
+	"main": ".svelte-kit/cloudflare/_worker.js",
 	"compatibility_date": "2025-05-04",
 	"assets": {
 		"binding": "ASSETS",
-		"directory": "./.output/public/"
+		"directory": ".svelte-kit/cloudflare"
 	},
 	"observability": {
 		"enabled": true
