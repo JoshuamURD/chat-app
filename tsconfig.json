@@ -1,22 +1,9 @@
 {
-  "compilerOptions": {
-    "target": "ESNext",
-    "module": "ESNext",
-    "moduleResolution": "bundler",
-    "allowSyntheticDefaultImports": true,
-    "esModuleInterop": true,
-    "jsx": "preserve",
-    "jsxImportSource": "solid-js",
-    "allowJs": true,
-    "strict": true,
-    "noEmit": true,
+  // https://nuxt.com/docs/guide/concepts/typescript
+"extends": "./.nuxt/tsconfig.json",
+"compilerOptions": {
     "types": [
-        "vinxi/types/client",
         "@cloudflare/workers-types/2023-07-01"
-    ],
-    "isolatedModules": true,
-    "paths": {
-      "~/*": ["./src/*"]
-    }
-  }
+    ]
+}
 }
