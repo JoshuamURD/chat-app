@@ -18,8 +18,9 @@ function App() {
     setError('');
 
     const protocol = window.location.protocol === 'https:' ? 'wss:' : 'ws:';
+    const wsHost = import.meta.env.VITE_WS_HOST || window.location.hostname;
     const port = import.meta.env.VITE_WS_PORT ? `:${import.meta.env.VITE_WS_PORT}` : '';
-    const wsUrl = `${protocol}//${window.location.hostname}${port}/ws`;
+    const wsUrl = `${protocol}//${wsHost}${port}/ws`;
     socket.current = new WebSocket(wsUrl);
 
     socket.current.onopen = () => {
