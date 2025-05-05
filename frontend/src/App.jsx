@@ -9,7 +9,9 @@ function App() {
   const messagesEndRef = useRef(null);
 
   useEffect(() => {
-    socket.current = new WebSocket('ws://localhost:8080/ws');
+    const protocol = window.location.protocol === 'https:' ? 'wss:' : 'ws:';
+    const wsUrl = `${protocol}//${window.location.hostname}:8080/ws`;
+    socket.current = new WebSocket(wsUrl);
 
     socket.current.onmessage = (event) => {
       const msg = JSON.parse(event.data);
@@ -17,7 +19,8 @@ function App() {
     };
 
     socket.current.onopen = () => {
-      fetch('http://localhost:8080/api/v1/chat')
+      const apiUrl = `http://${window.location.hostname}:8080/api/v1/chat`;
+      fetch(apiUrl)
         .then(response => response.json())
         .then(data => {
           setClients(data);
