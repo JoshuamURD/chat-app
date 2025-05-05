@@ -18,7 +18,7 @@ function App() {
     setError('');
 
     const protocol = window.location.protocol === 'https:' ? 'wss:' : 'ws:';
-    const wsUrl = `${protocol}//${window.location.hostname}:8080/ws`;
+    const wsUrl = `${protocol}//${window.location.host}/ws`;
     socket.current = new WebSocket(wsUrl);
 
     socket.current.onopen = () => {
@@ -31,7 +31,7 @@ function App() {
         description
       }));
       
-      const apiUrl = `${window.location.protocol}//${window.location.hostname}:8080/api/v1/chat`;
+      const apiUrl = `${window.location.protocol}//${window.location.host}/api/v1/chat`;
       fetch(apiUrl)
         .then(response => response.json())
         .then(data => {
