@@ -11,7 +11,12 @@ import (
 
 var upgrader = websocket.Upgrader{
 	CheckOrigin: func(r *http.Request) bool {
-		return true // Allow all origins for dev
+		if r.Header.Get("Origin") == "http://localhost:5173" {
+			return true
+		} else if r.Header.Get("Origin") == "https://chat-app-r9xg6.ondigitalocean.app" {
+			return true
+		}
+		return false
 	},
 }
 
@@ -82,7 +87,6 @@ func main() {
 		AllowMethods: []string{echo.GET, echo.POST, echo.PUT, echo.DELETE},
 	}))
 
-	// Serve static files from the frontend build directory
 	e.Static("/", "frontend/build")
 
 	e.GET("/ws", handleWebSocket)
