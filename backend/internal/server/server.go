@@ -20,8 +20,9 @@ func New() *Server {
 	e.Use(middleware.CORSWithConfig(middleware.CORSConfig{
 		AllowOrigins:     []string{"*"},
 		AllowMethods:     []string{http.MethodGet, http.MethodPost, http.MethodPut, http.MethodDelete, http.MethodOptions},
-		AllowHeaders:     []string{echo.HeaderOrigin, echo.HeaderContentType, echo.HeaderAccept},
+		AllowHeaders:     []string{echo.HeaderOrigin, echo.HeaderContentType, echo.HeaderAccept, "Upgrade", "Connection"},
 		AllowCredentials: true,
+		ExposeHeaders:    []string{"Upgrade", "Connection"},
 	}))
 
 	// Add logging middleware
